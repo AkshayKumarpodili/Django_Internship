@@ -42,6 +42,7 @@
 				<div class="row">
 					<div class="col-12 mt-4 py-2 mb-2">
 						<form method="post" id="form_input">
+							{% csrf_token %}
 							<div class="input-group">
 								<input type="url" class="cutt_url w-50 p-4 rounded-12"
 									placeholder="Paste long url and shorten it" name="longurl" required />
@@ -63,6 +64,7 @@
 
 			</div>
 
+			{% if submitted %}
 			<div id="results">
 				<div class="container">
 					<div class="row py-4">
@@ -70,11 +72,10 @@
 							<div class="url_options rounded-6" id="0">
 								<p class="data_link">August 24, 2023</p>
 								<p class="url_link">
-									https://www.codechef.com/ratings/all?filterBy=Country%3DIndia&itemsPerPage=15&order=asc&page=1&sortBy=global_rank
-
+									{{ long_url }}
 								</p>
 								<p id="link" class="link_element">
-									<a href="https://rr-url.herokuapp.com/cc-ranklist" class="short_url_l" target="_blank">https://rr-url.herokuapp.com/cc-ranklist</a>
+									<a href="{{ short_url }}" class="short_url_l" target="_blank">{{ short_url }}</a>
 								</p>
 								<button class="btn-cutt i_s" onclick="copyToClipboard()" data-toggle="tooltip"
 									data-html="true" data-placement="top" title="" data-original-title="Copy">
@@ -93,6 +94,7 @@
 					</div>
 				</div>
 			</div>
+			{% endif %}
 
 			<div class="container" id="alert-box" style="display: none">
 				<div class="row py-4">

@@ -11,6 +11,7 @@
 
 	<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" type="text/css" media="screen">
 	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="screen">
+	<link rel="stylesheet" href="{% static 'single_analytics_style.css' %}" type="text/css" media="screen">
 </head>
 
 <body class="pace-done is_index_lout">
@@ -56,11 +57,13 @@
 					</div>
 				</div>
 
+				{% if error %}
 				<div class="row">
 					<div class="col-12 mt-4 py-2 mb-2" style="text-align: center; color: red;">
 						<p>The alias name is already taken</p>
 					</div>
 				</div>
+				{% endif %}
 
 			</div>
 
@@ -70,7 +73,7 @@
 					<div class="row py-4">
 						<div class="col-12 result">
 							<div class="url_options rounded-6" id="0">
-								<p class="data_link">August 24, 2023</p>
+								<p class="data_link">{{ date }}</p>
 								<p class="url_link">
 									{{ long_url }}
 								</p>
@@ -86,7 +89,7 @@
 										<use xlink:href="#i_chart"></use>
 									</svg>
 									<span>
-										<b class="badge">0</b>clicks
+										<b class="badge">{{ clicks }}</b>clicks
 									</span>
 								</a>
 							</div>

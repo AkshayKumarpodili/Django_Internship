@@ -1,0 +1,22 @@
+.te{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    background-color: darkolivegreen;
+    width: 130px;
+
+}
+
+@media screen and (max-width: 769px){
+    .te {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 20px;
+        background-color: darkgrey;
+        margin: 5px;
+        
+    }
+}

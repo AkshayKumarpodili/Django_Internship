@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" class="">
 
@@ -5,10 +6,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Custom URL Shortener</title>
+	<title>Deep-Analytics</title>
 
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" type="text/css" media="screen">
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" media="screen">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 </head>
@@ -22,16 +23,16 @@
 				</div>
 
 				<div class="url_options url_stats_o" id="1">
-					<p class="data_link">April 2, 2022</p>
+					<p class="data_link">{{ date }}</p>
 					<p class="url_link">
-						https://www.codechef.com/ratings/all?filterBy=Country%3DIndia&itemsPerPage=15&order=asc&page=1&sortBy=global_rank
+						{{ long_url }}
 					</p>
 					<p id="link" class="link_element">
-						<a href="/cc-ranklist" class="short_url_l" target="_blank">
-							https://rr-url.herokuapp.com/cc-ranklist</a>
+						<a href="{{ long_url }}" class="short_url_l" target="_blank">
+							http://127.0.0.1:8000/{{ short_url }}</a>
 					</p>
 					<div class="stats_total btn-cutt click_stats btn_norm">
-						<div>Total clicks <strong class="allClicks">0</strong></div>
+						<div>Total clicks <strong class="allClicks">{{ clicks }}</strong></div>
 					</div>
 				</div>
 			</div>
@@ -53,8 +54,8 @@
 
 	<script>
         const ctx = document.getElementById('barChart').getContext('2d');
-        const countries = {{ countries | safe}};
-        const number_of_clicks = {{ clicks | safe}};
+        const countries = 'INDIA';
+        const number_of_clicks = "{{ clicks | safe }}";
 
         const barChart = new Chart(ctx, {
             type: 'bar',

@@ -91,6 +91,7 @@ def single_analytics(request,shorturl):
     elif user_agent.is_tablet or user_agent.is_pc:
         obj.desktop = obj.desktop + 1
 
+    obj.clicks =  obj.mobile + obj.desktop
 
     print("mobile = ",obj.mobile," and desktop = ", obj.desktop)
     context = {"short_url": short_url, "long_url": long_url, "date": date, "clicks": clicks, "mobile": obj.mobile, "desktop": obj.desktop}
